@@ -1,361 +1,152 @@
-# ScanSurge
-A lightweight, Python-based CLI network scanner for host discovery, port scanning, and service detection. Built by Sourish Chakraborty as a personal project to create an independent, ethical alternative to Nmap. ScanSurge is designed for cybersecurity students and enthusiasts who want a simple, powerful tool for network exploration.
+<h1>🔍 ScanSurge</h1>
+<p>A Lightweight Network Scanner for Cybersecurity Enthusiasts.</p>
 
-## Features
-- **Host Discovery**: Finds active devices using ARP requests (similar to `nmap -sn`).
-- **Port Scanning**: Scans TCP and UDP ports (e.g., 80, 22, 53) to detect open ports.
-- **Service Detection**: Identifies services via banner grabbing (akin to `nmap -sV`).
-- **Output Formats**: Saves results in CSV, JSON, or text for flexibility.
-- **User-Friendly**: Simple CLI arguments for beginners, avoiding Nmap’s complexity.
-- **Lightweight**: Minimal dependencies and ~150 lines of code.
+<p><strong>ScanSurge</strong> is a Python-based command-line interface (CLI) network scanner designed for host discovery, port scanning, and service detection. Developed by <strong>Sourish Chakraborty</strong> as a personal project, ScanSurge is an independent, ethical alternative to tools like Nmap. Tailored for cybersecurity students and enthusiasts, it offers a user-friendly experience for private, non-commercial use on authorized networks.</p>
 
-## Installation
-1. Clone the repository: `git clone https://github.com/Sourish-Chakraborty04/ScanSurge.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run as root (due to raw packet access): `sudo python3 scanner.py`
+<h2>📑 Table of Contents</h2>
+<ul>
+  <li><a href="#motivation">Project Motivation</a></li>
+  <li><a href="#features">Features</a></li>
+  <li><a href="#installation">Installation</a></li>
+  <li><a href="#usage">Usage</a>
+      <ol>
+        <li><a href="#kali">Kali Linux Roadmap</a></li>
+        <li><a href="#linux">Linux Roadmap</a></li>
+        <li><a href="#windows">Windows Roadmap</a></li>
+        <li><a href="#version">Version History</a></li>
+      </ol>
+  </li>
+  <li><a href="#testing">Testing Environment</a></li>
+  <li><a href="#roadmap">Roadmap</a></li>
+  <li><a href="#legal">Legal and Ethical Use</a></li>
+  <li><a href="#license">License</a></li>
+  <li><a href="#contributing">Contributing</a></li>
+  <li><a href="#acknowledgments">Acknowledgments</a></li>
+  <li><a href="#author">Author</a></li>
+</ul>
 
-## Usage
+<h2 id="motivation">🎯 Project Motivation</h2>
+<p>ScanSurge was created to empower cybersecurity learners with a simple, open-source tool for network exploration. As a cybersecurity student, I aimed to build a lightweight alternative to Nmap, focusing on core functionalities like host discovery and port scanning.</p>
 
-### Check version
-sudo python3 scanner.py --version
+<h2 id="features">✨ Features</h2>
+<ul>
+  <li>🔎 Host Discovery (like <code>nmap -sn</code>)</li>
+  <li>🛠️ TCP & UDP Port Scanning</li>
+  <li>🧠 Basic Banner Grabbing</li>
+  <li>🧭 Interactive Menu Mode</li>
+  <li>📄 Output in CSV/JSON/TXT</li>
+  <li>⚙️ Minimal Dependencies (~200 lines)</li>
+  <li>💻 Cross-platform Support</li>
+</ul>
 
-### Default host discovery (192.168.1.0/24, 3s timeout)
-sudo python3 scanner.py
+<h2 id="installation">📥 Installation</h2>
+<h3>Prerequisites</h3>
+<ul>
+  <li>Python 3.8+</li>
+  <li>Git</li>
+  <li>Administrator Privileges</li>
+</ul>
 
-### Custom IP range, timeout, and output
-sudo python3 scanner.py -r 192.168.0.0/24 -t 5 -o myresults
-
-### Scan TCP ports
-sudo python3 scanner.py -r 192.168.1.0/24 -p 80,22,443 --proto tcp
-
-### Scan TCP and UDP ports, save as JSON
-sudo python3 scanner.py -r 192.168.1.0/24 -p 80,53 --proto both --format json
-
-### ScanSurge
-A Lightweight Network Scanner for Cybersecurity Enthusiasts
-ScanSurge is a Python-based command-line interface (CLI) network scanner designed for host discovery, port scanning, and service detection. Developed by Sourish Chakraborty as a personal project, ScanSurge is an independent, ethical alternative to tools like Nmap, inspired by Linus Torvalds’ DIY ethos in creating Linux. Tailored for cybersecurity students and enthusiasts, it offers a user-friendly experience for private, non-commercial use on authorized networks.
-  
-#Table of Contents
-
-- **Project Motivation**
-- **Features**
-- **Installation**
-- **Usage**
-1. Kali Linux Roadmap
-2. Linux Roadmap
-3. Windows Roadmap
-
-
-- **Version History**
-- **Testing Environment**
-- **Roadmap**
-- **Legal and Ethical Use**
-- **License**
-- **Contributing**
-- **Acknowledgments**
-- **Author**
-
-#Project Motivation
-ScanSurge was created to empower cybersecurity learners with a simple, open-source tool for network exploration. As a cybersecurity student, I aimed to build a lightweight alternative to Nmap, focusing on core functionalities like host discovery and port scanning. By maintaining a clear version history through Git branches, ScanSurge showcases my development journey, from initial ARP scanning to advanced TCP/UDP capabilities, making it a valuable portfolio piece for technical interviews.
-
-###Features
-
-- **Host Discovery**: Identifies active devices using ARP requests, similar to nmap -sn.
-- **Port Scanning**: Scans TCP and UDP ports (e.g., 80, 22, 53) to detect open services.
-- **Service Detection**: Performs basic banner grabbing to identify running services.
-- **Interactive Mode**: Offers a menu-driven interface for selecting scan types, IP ranges, timeouts, and ports.
-- **Flexible Output**: Saves results in CSV, JSON, or plain text formats.
-- **Lightweight Design**: Minimal dependencies (~200 lines of code).
-- **Cross-Platform**: Compatible with Kali Linux, general Linux, Windows, and virtualized environments.
-
-##Installation
-
-###Prerequisites
-
-1. Python 3.8+: Install from python.org.
-2. Git: For cloning the repository.
-3. Administrative Privileges: Required for raw socket operations.
-
-General Steps
-
-1. Clone the Repository:git clone https://github.com/Sourish-Chakraborty04/ScanSurge.git
-
+<h3>Setup</h3>
+<pre><code>git clone https://github.com/yourusername/scansurge.git
 cd scansurge
+pip install -r requirements.txt</code></pre>
 
+<h3>Dependencies</h3>
+<p><code>scapy >= 2.4.5</code>, <code>ipaddress</code></p>
 
-2. Install Dependencies:
+<h2 id="usage">🚀 Usage</h2>
+<p>ScanSurge supports interactive and command-line modes. See roadmaps below:</p>
 
-pip install -r requirements.txt
+<h2 id="kali">🐉 Kali Linux Roadmap</h2>
+<h3>Install Prerequisites</h3>
+<pre><code>sudo apt-get update
+sudo apt-get install python3 python3-pip git libpcap-dev</code></pre>
 
-
-3. Dependencies: scapy>=2.4.5, ipaddress.
-
-
-
-###Platform-Specific Setup
-
-Kali Linux: See Kali Linux Roadmap.
-Linux (e.g., Ubuntu): See Linux Roadmap.
-Windows: See Windows Roadmap.
-
-##Usage
-ScanSurge supports interactive and command-line modes. Below are detailed roadmaps for each supported operating system.
-###Kali Linux Roadmap
-Kali Linux is the primary development platform for ScanSurge, optimized for cybersecurity tasks.
-
-Install Prerequisites:sudo apt-get update
-
-sudo apt-get install python3 python3-pip git libpcap-dev
-
-
-1. Clone and Set Up:
-
-git clone https://github.com/yourusername/scansurge.git
+<h3>Setup and Interface</h3>
+<pre><code>git clone https://github.com/yourusername/scansurge.git
 cd scansurge
 pip install -r requirements.txt
+ip addr</code></pre>
 
-
-2. Configure Network (VirtualBox):
-Open VirtualBox > Settings > Network > Adapter 1.
-Set to Bridged Adapter, select host’s active interface.
-Enable Promiscuous Mode: Allow All.
-Check “Cable Connected.”
-Verify interface:ip addr
-
-
-Note the interface name (e.g., eth0).
-
-
-
-
-3. Prepare Target:
-Start services on a target device:sudo python3 -m http.server 80
+<h3>Prepare Target</h3>
+<pre><code>sudo python3 -m http.server 80
 sudo systemctl start ssh
-
-
-4. Allow traffic:sudo ufw allow 80/tcp
+sudo ufw allow 80/tcp
 sudo ufw allow 22/tcp
-sudo ufw allow proto icmp
-
-
-5. Test connectivity:nc -zv <target-ip> 80
-
-
-
-
-6. Run ScanSurge:
-Interactive Mode:sudo python3 scanner.py --interactive
-
-
-Select option (e.g., 2 for TCP Port Scan).
-Enter <target-ip>, number of IPs, timeout, ports (e.g., 80,22), and interface (e.g., eth0).
-
-
-Command-Line Mode:sudo python3 scanner.py -r <network-range> -p 80,22 --proto tcp --iface eth0 -t 3
-
-
-
-
-7. View Results:cat scansurge_results.csv
-
-
-8. Troubleshoot:
-Check network:sudo arp-scan -l
-
-
-Disable firewall temporarily:sudo ufw disable
-
-
-
-
-
-###Linux Roadmap
-For general Linux distributions (e.g., Ubuntu, Debian).
-
-1. Install Prerequisites:sudo apt-get update
-
-sudo apt-get install python3 python3-pip git libpcap-dev
-
-
-2. Clone and Set Up:
-
-git clone https://github.com/yourusername/scansurge.git
-cd scansurge
-pip install -r requirements.txt
-
-
-Identify Interface:ip link
-
-
-Note the active interface (e.g., enp0s3).
-
-
-3. Prepare Target:
-On a target device:sudo python3 -m http.server 80
-sudo systemctl start ssh
-
-
-4. Allow traffic:sudo ufw allow 80/tcp
-sudo ufw allow 22/tcp
-sudo ufw allow proto icmp
-
-
-Test:nc -zv <target-ip> 80
-
-
-
-
-5. Run ScanSurge:
-Interactive Mode:sudo python3 scanner.py --interactive
-
-
-Command-Line Mode:sudo python3 scanner.py -r <network-range> -p 80,22 --proto tcp --iface enp0s3 -t 3
-
-
-
-
-6. View Results:cat scansurge_results.csv
-
-
-Troubleshoot:
-Install arp-scan:sudo apt-get install arp-scan
-sudo arp-scan -l
-
-
-Check firewall:sudo iptables -L
-
-
-
-
-
-###Windows Roadmap
-ScanSurge runs on Windows with Npcap for packet capture.
-
-1. Install Prerequisites:
-Download Python 3.8+ from python.org. Ensure pip and Add to PATH are selected.
-Install Git from git-scm.com.
-Download Npcap from npcap.com. Install with default options.
-
-
-2. Clone and Set Up:
-Open Command Prompt or PowerShell as Administrator:git clone https://github.com/yourusername/scansurge.git
-cd scansurge
-pip install -r requirements.txt
-
-
-
-
-3. Identify Interface:
-Run:ipconfig
-
-
-Note the adapter name (e.g., Ethernet).
-Use scapy to find Npcap interface:python -c "from scapy.all import conf; print(conf.ifaces)"
-
-
-Look for the Npcap interface name (e.g., \Device\NPF_{UUID}).
-
-
-
-
-4. Prepare Target:
-On a target device (Windows/Linux):
-Start a web server (e.g., use Python or install Apache).
-Enable SSH if available.
-
-
-5. Allow traffic in Windows Defender Firewall:
-Control Panel > Windows Defender Firewall > Advanced Settings.
-Create inbound rules for TCP 80, 22, and ICMPv4.
-
-
-Test:ncat -zv <target-ip> 80
-
-
-
-
-6. Run ScanSurge:
-Interactive Mode (as Administrator):python scanner.py --interactive
-
-
-Command-Line Mode:python scanner.py -r <network-range> -p 80,22 --proto tcp --iface "\Device\NPF_{UUID}" -t 3
-
-
-
-
-7. View Results:type scansurge_results.csv
-
-
-8. Troubleshoot:
-Verify Npcap:scapy
-
-
-Check firewall:netsh advfirewall show allprofiles
-
-
-
-
-
-##Version History
-ScanSurge’s development is tracked through Git branches and releases:
-
-###v1.0.2 (main branch, release):
-Fixed TCP port scanning for multiple IPs.
-Improved output formatting.
-Optimized timeout handling.
-
-
-###v1.0.1 (v1.0.1 branch, release):
-Introduced interactive mode.
-Added custom IP counts and timeouts.
-Enhanced TCP/UDP scanning.
-
-
-###v1.0.0 (planned v1.0.0 branch):
-Initial release with ARP host discovery.
-
-
-
-###Accessing Versions:
-
-Latest: Clone main or download from releases.
-Older: Checkout branches (e.g., git checkout v1.0.1) or download from releases.
-
-Testing Environment
-Developed in a controlled home lab:
-
-Network: Six PCs on a private subnet, connected via a router.
-Devices: Kali Linux VM (VirtualBox, Bridged Adapter), Windows/Linux PCs.
-Tools: VS Code, arp-scan for validation.
-Setup: Firewalls allow ICMP, ARP, TCP/UDP; services (HTTP, SSH) enabled.
-
-##Roadmap
-
-1. OS Fingerprinting: Detect operating systems.
-2. Advanced Service Detection: Expand banner grabbing.
-3. GUI Option: Graphical interface for accessibility.
-4. Performance: Asynchronous scanning for larger networks.
-5. IPv6 Support: Add IPv6 compatibility.
-
-##Legal and Ethical Use
-ScanSurge is for educational and private use only on authorized networks. Unauthorized scanning may violate laws like the U.S. Computer Fraud and Abuse Act (CFAA). Always obtain permission before scanning.
-##License
-ScanSurge Open License: Free for non-commercial use. See LICENSE.
-##Contributing
-
-- **Fork the repository.**
-- **Create a branch (git checkout -b feature/new-feature).
-- **Commit changes (git commit -m "Add new feature").
-- **Push (git push origin feature/new-feature).
-Open a pull request.
-
-Report issues at Issues.
-##Acknowledgments
-
-Tools: Scapy, Python.
-Community: Cybersecurity forums.
-
-##Author
-Sourish Chakraborty Cybersecurity Student | Network Security Enthusiast  
-
-GitHub: Sourish-Chakraborty04
+sudo ufw allow proto icmp</code></pre>
+
+<h3>Run</h3>
+<pre><code>sudo python3 scanner.py --interactive
+# or
+sudo python3 scanner.py -r &lt;network-range&gt; -p 80,22 --proto tcp --iface eth0 -t 3</code></pre>
+
+<h2 id="linux">🐧 Linux Roadmap</h2>
+<p>Same steps as Kali with interface adjustment (e.g., <code>enp0s3</code>).</p>
+
+<h2 id="windows">🪟 Windows Roadmap</h2>
+<h3>Install</h3>
+<ul>
+  <li>Python 3.8+ (Add to PATH)</li>
+  <li>Git</li>
+  <li>Npcap (default options)</li>
+</ul>
+
+<h3>Run</h3>
+<pre><code>python scanner.py --interactive
+# or
+python scanner.py -r &lt;network-range&gt; -p 80,22 --proto tcp --iface "\Device\NPF_{UUID}" -t 3</code></pre>
+
+<h2 id="version">📌 Version History</h2>
+<ul>
+  <li><strong>v1.0.2:</strong> Improved formatting, fixed multiple IP scanning.</li>
+  <li><strong>v1.0.1:</strong> Interactive mode, custom timeouts, UDP added.</li>
+  <li><strong>v1.0.0:</strong> Initial release with ARP scanning.</li>
+</ul>
+
+<h2 id="testing">🧪 Testing Environment</h2>
+<ul>
+  <li>6 devices on a private subnet</li>
+  <li>Kali VM, Windows/Linux PCs</li>
+  <li>Tools: VS Code, arp-scan</li>
+</ul>
+
+<h2 id="roadmap">🛣️ Roadmap</h2>
+<ul>
+  <li>OS Fingerprinting</li>
+  <li>Advanced Service Detection</li>
+  <li>GUI Version</li>
+  <li>Async Scanning</li>
+  <li>IPv6 Support</li>
+</ul>
+
+<h2 id="legal">⚖️ Legal and Ethical Use</h2>
+<p>Use only on authorized networks. Violating terms may breach laws such as the CFAA.</p>
+
+<h2 id="license">📝 License</h2>
+<p><strong>ScanSurge Open License:</strong> Free for educational, non-commercial use. See <code>LICENSE</code>.</p>
+
+<h2 id="contributing">🤝 Contributing</h2>
+<ol>
+  <li>Fork the repo</li>
+  <li>Create a branch: <code>git checkout -b feature/new-feature</code></li>
+  <li>Commit: <code>git commit -m "Add new feature"</code></li>
+  <li>Push: <code>git push origin feature/new-feature</code></li>
+  <li>Open a Pull Request</li>
+</ol>
+<p>Report issues under <code>Issues</code> tab.</p>
+
+<h2 id="acknowledgments">🙏 Acknowledgments</h2>
+<ul>
+  <li>👨‍💻 Inspiration: Linus Torvalds</li>
+  <li>🔧 Tools: Python, Scapy</li>
+  <li>🌐 Community: Cybersecurity Forums</li>
+</ul>
+
+<h2 id="author">👤 Author</h2>
+<p><strong>Sourish Chakraborty</strong><br>
+Cybersecurity Student | Network Security Enthusiast</p>
+<p>GitHub: <a href="https://github.com/Sourish-Chakraborty04" target="_blank">Sourish-Chakraborty04</a></p>
+
+</body>
+</html>
