@@ -1,21 +1,51 @@
-MIT License
+ScanSurge Open License
 
 Copyright (c) 2025 Sourish Chakraborty
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of this software and associated documentation files (the "Software"), to use,
+copy, modify, merge, publish, and distribute the Software for private,
+non-commercial purposes only, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. **Non-Commercial and Private Use Only**: The Software may not be used for
+   any commercial purposes, including but not limited to selling, licensing for
+   profit, monetization, or inclusion in commercial products or services. Use,
+   modification, and distribution are restricted to private, non-commercial
+   contexts, such as personal projects, educational settings, or research by
+   individuals.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. **Modifications in Forked Repositories**: Modifications to the Software are
+   permitted only for private use and must be made in a forked repository or
+   separate branch. Changes may not be committed directly to the main branch of
+   the original repository unless explicitly approved by the copyright holder.
+
+3. **Retention of Original Copyright and Attribution**: The original Software
+   remains copyrighted by [Your Name]. Modified versions must clearly
+   acknowledge [Your Name] as the author of the original Software and may not
+   claim full credit for the work. Any modified versions must include a notice
+   stating: "Based on ScanSurge by [Your Name], licensed under the ScanSurge
+   Open License."
+
+4. **Patent Credit Requirement**: If the Software or any modified version is
+   used as the basis for obtaining a patent, the patent application must
+   explicitly credit [Your Name] as the author of the original Software and
+   reference the ScanSurge Open License.
+
+5. **Retention of Notices**: The above copyright notice, this permission notice,
+   and the disclaimer below shall be included in all copies or substantial
+   portions of the Software.
+
+6. **No Warranty or Liability**: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+   WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+   WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+   NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+   FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE
+   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. The copyright holder is not
+   responsible for any harm, damage, or legal consequences caused by the use,
+   misuse, or irresponsible usage of the Software by any individual or
+   organization.
+
+This Software is intended for educational and ethical use only. Users must only
+scan networks they own or have explicit permission to scan. Unauthorized
+scanning may violate laws such as the Computer Fraud and Abuse Act (CFAA).
