@@ -55,10 +55,10 @@ ScanSurge is a Python-based command-line interface (CLI) network scanner designe
 - **Acknowledgments**
 - **Author**
 
-##Project Motivation
+#Project Motivation
 ScanSurge was created to empower cybersecurity learners with a simple, open-source tool for network exploration. As a cybersecurity student, I aimed to build a lightweight alternative to Nmap, focusing on core functionalities like host discovery and port scanning. By maintaining a clear version history through Git branches, ScanSurge showcases my development journey, from initial ARP scanning to advanced TCP/UDP capabilities, making it a valuable portfolio piece for technical interviews.
 
-##Features
+###Features
 
 - **Host Discovery**: Identifies active devices using ARP requests, similar to nmap -sn.
 - **Port Scanning**: Scans TCP and UDP ports (e.g., 80, 22, 53) to detect open services.
@@ -69,6 +69,7 @@ ScanSurge was created to empower cybersecurity learners with a simple, open-sour
 - **Cross-Platform**: Compatible with Kali Linux, general Linux, Windows, and virtualized environments.
 
 ##Installation
+
 ###Prerequisites
 
 1. Python 3.8+: Install from python.org.
@@ -77,7 +78,7 @@ ScanSurge was created to empower cybersecurity learners with a simple, open-sour
 
 General Steps
 
-1. Clone the Repository:git clone https://github.com/yourusername/scansurge.git
+1. Clone the Repository:git clone https://github.com/Sourish-Chakraborty04/ScanSurge.git
 
 cd scansurge
 
