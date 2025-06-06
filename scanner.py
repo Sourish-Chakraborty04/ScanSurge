@@ -1,6 +1,8 @@
 import argparse
 import socket
 import os
+import platform
+import ctypes
 from scapy.all import ARP, Ether, srp, TCP, UDP
 import sys
 from utils import print_results, save_results
@@ -8,8 +10,7 @@ from utils import print_results, save_results
 __version__ = "1.0.0"
 
 def display_banner():
-    """Display ScanSurge activation banner in the terminal."""
-    banner = """
+    banner = r"""
     ╔══════════════════════════════════════════════════════════════════════════════════╗
     ║                                                                                  ║
     ║    _______ _______ _______ _          _______         _______ _______ _______    ║
@@ -29,6 +30,19 @@ def display_banner():
     ╚══════════════════════════════════════════════════════════════════════════════════╝
     """
     print(banner)
+
+def is_admin():  # CHANGE: New function to check admin privileges cross-platform, replacing os.geteuid()
+    """Check if the script is running with administrative privileges."""
+    if platform.system() == "Windows":
+        try:
+            return ctypes.windll.shell32.IsUserAnAdmin() != 0
+        except:
+            return False
+    else:
+        try:
+            return os.geteuid() == 0
+        except AttributeError:
+            return False
 
 def scan_network(ip_range, timeout=3):
     """Scan network for active devices using ARP requests."""
@@ -91,16 +105,16 @@ def scan_devices(devices, ports=None, protocols=None, timeout=1):
 def main():
     parser = argparse.ArgumentParser(description="ScanSurge: A lightweight network scanner for host and port discovery.")
     parser.add_argument("--version", action="version", version=f"ScanSurge v{__version__}")
-    parser.add_argument("-r", "--range", default="192.168.1.0/24", help="IP range to scan (e.g., 192.168.1.0/24)")
+    parser.add_argument("-r", "--range", default="192.168.0.0/24", help="IP range to scan (e.g., 192.168.0.0/24)")  # CHANGE: Default range set to 192.168.0.0/24 for Windows home networks
     parser.add_argument("-t", "--timeout", type=int, default=3, help="Scan timeout in seconds")
-    parser.add_argument("-p", "--ports", help="Comma-separated ports to scan (e.g., 80,22)")
+    parser.add_argument("--ports", help="Comma-separated ports to scan (e.g., 80,22)")
     parser.add_argument("--proto", default="tcp", choices=["tcp", "udp", "both"], help="Protocol(s) to scan (tcp, udp, or both)")
     parser.add_argument("-o", "--output", default="scansurge_results", help="Output file prefix")
     parser.add_argument("--format", default="csv", choices=["csv", "json", "txt"], help="Output format (csv, json, txt)")
     args = parser.parse_args()
 
-    if os.geteuid() != 0:
-        print("Error: ScanSurge requires root privileges. Run with sudo.")
+    if not is_admin():  # CHANGE: Replaced os.geteuid() with is_admin() for cross-platform compatibility
+        print("Error: ScanSurge requires administrative privileges. Run with admin rights (e.g., 'Run as Administrator' on Windows or 'sudo' on Unix/Linux).")
         sys.exit(1)
 
     display_banner()
@@ -108,14 +122,14 @@ def main():
     ports = [int(p) for p in args.ports.split(",")] if args.ports else None
 
     print(f"Scanning {args.range} with timeout {args.timeout}s...")
-    devices = scan_network(args.range, args.timeout)
+    devices = scan_network(args.range, timeout=args.timeout)
     if not devices:
         print("No devices found.")
         sys.exit(1)
 
     devices = scan_devices(devices, ports, protocols, args.timeout)
-    print_results(devices, ports, protocols)
-    save_results(devices, f"{args.output}.{args.format}", ports, protocols, args.format)
+    print_results(devices, ports, protocols=args)
+    save_results(devices, f"{args.output}.{args.format}", ports, protocols=args, format=args.format)
 
 if __name__ == "__main__":
     try:
