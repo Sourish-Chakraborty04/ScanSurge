@@ -16,26 +16,26 @@ A lightweight, Python-based CLI network scanner for host discovery, port scannin
 
 ## Usage
 
-# Check version
+### Check version
 sudo python3 scanner.py --version
 
-# Default host discovery (192.168.1.0/24, 3s timeout)
+### Default host discovery (192.168.1.0/24, 3s timeout)
 sudo python3 scanner.py
 
-# Custom IP range, timeout, and output
+### Custom IP range, timeout, and output
 sudo python3 scanner.py -r 192.168.0.0/24 -t 5 -o myresults
 
-# Scan TCP ports
+### Scan TCP ports
 sudo python3 scanner.py -r 192.168.1.0/24 -p 80,22,443 --proto tcp
 
-# Scan TCP and UDP ports, save as JSON
+### Scan TCP and UDP ports, save as JSON
 sudo python3 scanner.py -r 192.168.1.0/24 -p 80,53 --proto both --format json
 
-# ScanSurge
+### ScanSurge
 A Lightweight Network Scanner for Cybersecurity Enthusiasts
 ScanSurge is a Python-based command-line interface (CLI) network scanner designed for host discovery, port scanning, and service detection. Developed by Sourish Chakraborty as a personal project, ScanSurge is an independent, ethical alternative to tools like Nmap, inspired by Linus Torvalds’ DIY ethos in creating Linux. Tailored for cybersecurity students and enthusiasts, it offers a user-friendly experience for private, non-commercial use on authorized networks.
   
-##Table of Contents
+#Table of Contents
 
 - **Project Motivation**
 - **Features**
