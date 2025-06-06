@@ -9,7 +9,7 @@ from utils import print_results, save_results
 from concurrent.futures import ThreadPoolExecutor
 import ipaddress
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 def display_banner():
     """Display ScanSurge activation banner in the terminal."""
@@ -26,7 +26,7 @@ def display_banner():
 ║   \_______(_______|/     \|/    )_)  \_______(_______|/   \__(_______(_______/   ║
 ║                                                                                  ║
 ║                                                                                  ║
-║                                     v1.0.1                                       ║
+║                                     v1.0.2                                       ║
 ║                           Lightweight Network Scanner                            ║
 ║                           Built by Sourish Chakraborty                           ║
 ║                                                                                  ║
@@ -154,7 +154,7 @@ def interactive_mode():
 
     # Get target IP or range
     while True:
-        ip_range = input("Enter target IP or range (e.g., 192.168.0.102 or 192.168.0.0/24): ").strip()
+        ip_range = input("Enter target IP or range (e.g., 192.168.1.100 or 192.168.1.0/24): ").strip()
         try:
             ipaddress.ip_network(ip_range, strict=False)
             break
@@ -203,31 +203,28 @@ def interactive_mode():
 
     if choice in ['1', '4']:
         print(f"\nStarting ARP Host Discovery on {ip_range}...")
-        devices = scan_network(ip_range, timeout, iface, max_ips)
-        if not devices:
+        devices = scan_network(ip_range, timeout/2 if choice == '4' else timeout, iface, max_ips)
+        if not devices and choice == '1':
             print("No devices found.")
-            if choice == '1':
-                sys.exit(1)
+            sys.exit(1)
 
     if choice in ['2', '3']:
-        # For TCP/UDP only, assume single IP or prompt for devices
-        try:
-            network = ipaddress.ip_network(ip_range, strict=False)
-            devices = [{"ip": str(ip), "mac": "Unknown", "hostname": "Unknown"} for ip in list(network.hosts())[:max_ips]]
-        except:
+        network = ipaddress.ip_network(ip_range, strict=False)
+        devices = [{"ip": str(ip), "mac": "Unknown", "hostname": "Unknown"} for ip in list(network.hosts())[:max_ips]]
+        if not devices:
             devices = [{"ip": ip_range, "mac": "Unknown", "hostname": "Unknown"}]
 
     if choice in ['2', '3', '4']:
         print(f"\nStarting {protocols[0].upper()} Port Scan on {len(devices)} devices...")
-        devices = scan_devices(devices, ports, protocols, timeout/2)
+        devices = scan_devices(devices, ports, protocols, timeout/2 if choice == '4' else timeout)
 
-    print_results(devices, ports, protocols=protocols[0] if choice in ['2', '3'] else "both")
-    save_results(devices, "scansurge_results.csv", ports, protocols=protocols[0] if choice in ['2', '3'] else "both", format="csv")
+    print_results(devices, ports, protocols=protocols)
+    save_results(devices, "scansurge_results.csv", ports, protocols=protocols, format="csv")
 
 def main():
     parser = argparse.ArgumentParser(description="ScanSurge: A lightweight network scanner for host and port discovery.")
     parser.add_argument("--version", action="version", version=f"ScanSurge v{__version__}")
-    parser.add_argument("-r", "--range", help="IP range to scan (e.g., 192.168.0.0/24)")
+    parser.add_argument("-r", "--range", help="IP range to scan (e.g., 192.168.1.0/24)")
     parser.add_argument("-t", "--timeout", type=float, help="Total scan timeout in seconds")
     parser.add_argument("-p", "--ports", help="Comma-separated ports to scan (e.g., 80,22)")
     parser.add_argument("--proto", choices=["tcp", "udp", "both"], help="Protocol(s) to scan")
