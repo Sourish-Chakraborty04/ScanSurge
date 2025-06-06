@@ -15,7 +15,7 @@ A lightweight, Python-based CLI network scanner for host discovery, port scannin
 3. Run as root (due to raw packet access): `sudo python3 scanner.py`
 
 ## Usage
-```bash
+
 # Check version
 sudo python3 scanner.py --version
 
@@ -78,12 +78,12 @@ ScanSurge was created to empower cybersecurity learners with a simple, open-sour
 General Steps
 
 1. Clone the Repository:git clone https://github.com/yourusername/scansurge.git
-```bash
+
 cd scansurge
 
 
 2. Install Dependencies:
-```bash
+
 pip install -r requirements.txt
 
 
@@ -103,12 +103,12 @@ ScanSurge supports interactive and command-line modes. Below are detailed roadma
 Kali Linux is the primary development platform for ScanSurge, optimized for cybersecurity tasks.
 
 Install Prerequisites:sudo apt-get update
-```bash
+
 sudo apt-get install python3 python3-pip git libpcap-dev
 
 
 1. Clone and Set Up:
-```bash
+
 git clone https://github.com/yourusername/scansurge.git
 cd scansurge
 pip install -r requirements.txt
@@ -172,12 +172,12 @@ Disable firewall temporarily:sudo ufw disable
 For general Linux distributions (e.g., Ubuntu, Debian).
 
 1. Install Prerequisites:sudo apt-get update
-```bash
+
 sudo apt-get install python3 python3-pip git libpcap-dev
 
 
 2. Clone and Set Up:
-```bash
+
 git clone https://github.com/yourusername/scansurge.git
 cd scansurge
 pip install -r requirements.txt
