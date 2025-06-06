@@ -10,7 +10,7 @@ A lightweight, Python-based CLI network scanner for host discovery, port scannin
 - **Lightweight**: Minimal dependencies and ~150 lines of code.
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/yourusername/ScanSurge.git`
+1. Clone the repository: `git clone https://github.com/Sourish-Chakraborty04/ScanSurge.git`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run as root (due to raw packet access): `sudo python3 scanner.py`
 
