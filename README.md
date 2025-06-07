@@ -138,7 +138,6 @@ python scanner.py -r &lt;network-range&gt; -p 80,22 --proto tcp --iface "\Device
 
 <h2 id="acknowledgments">🙏 Acknowledgments</h2>
 <ul>
-  <li>👨‍💻 Inspiration: Linus Torvalds</li>
   <li>🔧 Tools: Python, Scapy</li>
   <li>🌐 Community: Cybersecurity Forums</li>
 </ul>
